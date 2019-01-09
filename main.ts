@@ -496,7 +496,7 @@ namespace motor {
 	 * Two parallel stepper motors are executed simultaneously(DegreeDual) 28BYJ-48.
     */
     //% weight=40
-    //% blockId=stepperDegreeDual_28 block="Dual Stepper %stepper|M1_M2 dir %direction1|degree %degree1|M3_M4 dir %direction2|degree %degree2"
+    //% blockId=stepperDegreeDual_28 block="28BYJ-48双步进 %stepper|M1_M2 方向 %direction1|角度 %degree1|M3_M4 方向 %direction2|角度 %degree2"
     //% stepper.fieldEditor="gridpicker" stepper.fieldOptions.columns=2
     //% direction1.fieldEditor="gridpicker" direction1.fieldOptions.columns=2
     //% direction2.fieldEditor="gridpicker" direction2.fieldOptions.columns=2
@@ -529,7 +529,7 @@ namespace motor {
 	 * Two parallel stepper motors are executed simultaneously(Turn).
     */
     //% weight=30
-    //% blockId=motor_stepperTurnDual_28 block="Dual Stepper %stepper|M1_M2 dir %direction1|trun %trun1|M3_M4 dir %direction2|trun %trun2"
+    //% blockId=motor_stepperTurnDual_28 block="28BYJ-48双步进 %stepper|M1_M2 方向 %direction1|圈数 %trun1|M3_M4 方向 %direction2|圈数 %trun2"
     //% stepper.fieldEditor="gridpicker" stepper.fieldOptions.columns=2
     //% direction1.fieldEditor="gridpicker" direction1.fieldOptions.columns=2
     //% direction2.fieldEditor="gridpicker" direction2.fieldOptions.columns=2

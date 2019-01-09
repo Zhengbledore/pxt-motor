@@ -1,7 +1,7 @@
 {
-    "name": "aaa-motor",
+    "name": "df-motor-edit",
     "version": "0.0.2",
-    "description": "123321.",
+    "description": "just edit dual 28BYJ-48 stepper motor. by Zhengbledore",
     "license": "GNU",
     "dependencies": {
         "core": "*",
