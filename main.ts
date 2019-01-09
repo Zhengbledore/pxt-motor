@@ -509,49 +509,19 @@ namespace motor {
         let Degree1 = Math.abs(degree1);
         let Degree2 = Math.abs(degree2);
 
-        if (stepper == 1) {  // 42 stepper
-            if (Degree1 == 0 && Degree2 == 0) {
-                setStepper_42(0x01, direction1 > 0);
-                setStepper_42(0x02, direction2 > 0);
-            } else if ((Degree1 == 0) && (Degree2 > 0)) {
-                timeout1 = (50000 * Degree2) / (360 * 100)
-                setStepper_42(0x01, direction1 > 0);
-                setStepper_42(0x02, direction2 > 0);
-                basic.pause(timeout1);
-                motorStop(3); motorStop(4);
-            } else if ((Degree2 == 0) && (Degree1 > 0)) {
-                timeout1 = (50000 * Degree1) / (360 * 100)
-                setStepper_42(0x01, direction1 > 0);
-                setStepper_42(0x02, direction2 > 0);
-                basic.pause(timeout1);
-                motorStop(1); motorStop(2);
-            } else if ((Degree2 > Degree1)) {
-                timeout1 = (50000 * Degree1) / (360 * 100)
-                timeout2 = (50000 * (Degree2 - Degree1)) / (360 * 100)
-                setStepper_42(0x01, direction1 > 0);
-                setStepper_42(0x02, direction2 > 0);
-                basic.pause(timeout1);
-                motorStop(1); motorStop(2);
-                basic.pause(timeout2);
-                motorStop(3); motorStop(4);
-            }  else if ((Degree2 < Degree1)) {
-                timeout1 = (50000 * Degree2) / (360 * 100)
-                timeout2 = (50000 * (Degree1 - Degree2)) / (360 * 100)
-                setStepper_42(0x01, direction1 > 0);
-                setStepper_42(0x02, direction2 > 0);
-                basic.pause(timeout1);
-                motorStop(3); motorStop(4);
-                basic.pause(timeout2);
-                motorStop(1); motorStop(2);
-            }
-        } else if (stepper == 2) { // 28BYJ-48
-            if (Degree1 == 0 && Degree2 == 0) {
-                setStepper_28(0x01, direction1 > 0);
-                setStepper_28(0x02, direction2 > 0);
-            }
+        Degree1 = Degree1 * direction1;
+        Degree2 = Degree2 * direction2;
+        //setFreq(100);
+        setStepper_28(0x01, direction1 > 0);
+        setStepper_28(0x02, direction2 > 0);
+        Degree1 = Math.abs(Degree1);
+        basic.pause((1000 * Degree1) / 360);
+        motorStop(1)
+        motorStop(2)
+        motorStop(3)
+        motorStop(4)
+        if (Degree1 == 0 && Degree2 == 0) {
 
-        } else {
-            //
         }
     }
 
