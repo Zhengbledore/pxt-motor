@@ -429,25 +429,25 @@ namespace motor {
             } 
         } else if (stepper == 2) {
             if (Degree1 == 0 && Degree2 == 0) {
-                setStepper_28(0x01, direction1 > 0);
-                setStepper_28(0x02, direction2 > 0);
+                setStepper_28(1, direction1 > 0);
+                setStepper_28(2, direction2 > 0);
             } else if ((Degree1 == 0) && (Degree2 > 0)) { 
                 timeout1 = (50000 * Degree2) / (360 * 100)
-                setStepper_28(0x01, direction1 > 0);
-                setStepper_28(0x02, direction2 > 0);
+                setStepper_28(1, direction1 > 0);
+                setStepper_28(2, direction2 > 0);
                 basic.pause(timeout1);
                 motorStop(3); motorStop(4);
             } else if ((Degree2 == 0) && (Degree1 > 0)) { 
                 timeout1 = (50000 * Degree1) / (360 * 100)
-                setStepper_28(0x01, direction1 > 0);
-                setStepper_28(0x02, direction2 > 0);
+                setStepper_28(1, direction1 > 0);
+                setStepper_28(2, direction2 > 0);
                 basic.pause(timeout1);
                 motorStop(1); motorStop(2);
             } else if ((Degree2 > Degree1)) { 
                 timeout1 = (50000 * Degree1) / (360 * 100)
                 timeout2 = (50000 * (Degree2 - Degree1)) / (360 * 100)
-                setStepper_28(0x01, direction1 > 0);
-                setStepper_28(0x02, direction2 > 0);
+                setStepper_28(1, direction1 > 0);
+                setStepper_28(2, direction2 > 0);
                 basic.pause(timeout1);
                 motorStop(1); motorStop(2);
                 basic.pause(timeout2);
@@ -455,8 +455,8 @@ namespace motor {
             }  else if ((Degree2 < Degree1)) { 
                 timeout1 = (50000 * Degree2) / (360 * 100)
                 timeout2 = (50000 * (Degree1 - Degree2)) / (360 * 100)
-                setStepper_28(0x01, direction1 > 0);
-                setStepper_28(0x02, direction2 > 0);
+                setStepper_28(1, direction1 > 0);
+                setStepper_28(2, direction2 > 0);
                 basic.pause(timeout1);
                 motorStop(3); motorStop(4);
                 basic.pause(timeout2);
@@ -490,6 +490,94 @@ namespace motor {
 
         }
         
+    }
+
+    /**
+	 * Two parallel stepper motors are executed simultaneously(DegreeDual) 28BYJ-48.
+    */
+    //% weight=40
+    //% blockId=stepperDegreeDual_28 block="Dual Stepper %stepper|M1_M2 dir %direction1|degree %degree1|M3_M4 dir %direction2|degree %degree2"
+    //% stepper.fieldEditor="gridpicker" stepper.fieldOptions.columns=2
+    //% direction1.fieldEditor="gridpicker" direction1.fieldOptions.columns=2
+    //% direction2.fieldEditor="gridpicker" direction2.fieldOptions.columns=2
+    export function stepperDegreeDual_28(stepper: Stepper, direction1: Dir, degree1: number, direction2: Dir,degree2: number): void {
+        if (!initialized) {
+            initPCA9685()
+        }
+        let timeout1 = 0;
+        let timeout2 = 0;
+        let Degree1 = Math.abs(degree1);
+        let Degree2 = Math.abs(degree2);
+
+        if (stepper == 1) {  // 42 stepper
+            if (Degree1 == 0 && Degree2 == 0) {
+                setStepper_42(0x01, direction1 > 0);
+                setStepper_42(0x02, direction2 > 0);
+            } else if ((Degree1 == 0) && (Degree2 > 0)) {
+                timeout1 = (50000 * Degree2) / (360 * 100)
+                setStepper_42(0x01, direction1 > 0);
+                setStepper_42(0x02, direction2 > 0);
+                basic.pause(timeout1);
+                motorStop(3); motorStop(4);
+            } else if ((Degree2 == 0) && (Degree1 > 0)) {
+                timeout1 = (50000 * Degree1) / (360 * 100)
+                setStepper_42(0x01, direction1 > 0);
+                setStepper_42(0x02, direction2 > 0);
+                basic.pause(timeout1);
+                motorStop(1); motorStop(2);
+            } else if ((Degree2 > Degree1)) {
+                timeout1 = (50000 * Degree1) / (360 * 100)
+                timeout2 = (50000 * (Degree2 - Degree1)) / (360 * 100)
+                setStepper_42(0x01, direction1 > 0);
+                setStepper_42(0x02, direction2 > 0);
+                basic.pause(timeout1);
+                motorStop(1); motorStop(2);
+                basic.pause(timeout2);
+                motorStop(3); motorStop(4);
+            }  else if ((Degree2 < Degree1)) {
+                timeout1 = (50000 * Degree2) / (360 * 100)
+                timeout2 = (50000 * (Degree1 - Degree2)) / (360 * 100)
+                setStepper_42(0x01, direction1 > 0);
+                setStepper_42(0x02, direction2 > 0);
+                basic.pause(timeout1);
+                motorStop(3); motorStop(4);
+                basic.pause(timeout2);
+                motorStop(1); motorStop(2);
+            }
+        } else if (stepper == 2) { // 28BYJ-48
+            if (Degree1 == 0 && Degree2 == 0) {
+                setStepper_28(0x01, direction1 > 0);
+                setStepper_28(0x02, direction2 > 0);
+            }
+
+        } else {
+            //
+        }
+    }
+
+    /**
+	 * Two parallel stepper motors are executed simultaneously(Turn).
+    */
+    //% weight=30
+    //% blockId=motor_stepperTurnDual_28 block="Dual Stepper %stepper|M1_M2 dir %direction1|trun %trun1|M3_M4 dir %direction2|trun %trun2"
+    //% stepper.fieldEditor="gridpicker" stepper.fieldOptions.columns=2
+    //% direction1.fieldEditor="gridpicker" direction1.fieldOptions.columns=2
+    //% direction2.fieldEditor="gridpicker" direction2.fieldOptions.columns=2
+    export function motor_stepperTurnDual_28(stepper: Stepper, direction1: Dir, trun1: number, direction2: Dir,trun2: number): void {
+        if ((trun1 == 0)&&(trun2 == 0)) {
+            return;
+        }
+        let degree1 = trun1 * 360;
+        let degree2 = trun2 * 360;
+
+        if (stepper == 1) {
+            stepperDegreeDual_28(stepper, direction1, degree1, direction2, degree2);
+        } else if (stepper == 2) {
+            stepperDegreeDual_28(stepper, direction1, degree1, direction2, degree2);
+        } else {
+
+        }
+
     }
 
     /**
