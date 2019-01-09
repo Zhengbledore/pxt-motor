@@ -1,7 +1,7 @@
 {
     "name": "aaa-motor",
     "version": "0.0.2",
-    "description": "This is dc motor, stepper motor, steering gear library.",
+    "description": "123321.",
     "license": "GNU",
     "dependencies": {
         "core": "*",
