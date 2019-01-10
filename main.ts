@@ -571,5 +571,17 @@ namespace motor {
             motorStop(idx);
         }
     }
+
+    /**
+	 * Stop all 28BYJ-48 5V stepper motors
+    */
+    //% weight=10
+    //% blockId=motor_stopAllStepperMotor block="停止所有28BYJ-48步进电机"
+    export function stopAllStepperMotor(): void {
+        motorStop(1)
+        motorStop(2)
+        motorStop(3)
+        motorStop(4)
+    }
 }
 

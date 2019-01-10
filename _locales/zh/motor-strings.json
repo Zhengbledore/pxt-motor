@@ -12,5 +12,6 @@
     "motor.stepperDegreeDual_28|block": "28BYJ-48双步进 %stepper|M1_M2 方向 %direction1|角度 %degree1|M3_M4 方向 %direction2|角度 %degree2",
     "motor.stepperTurnDual_28|block": "28BYJ-48双步进 %stepper|M1_M2 方向 %direction1|圈数 %trun1|M3_M4 方向 %direction2|圈数 %trun2",
     "motor.motorStop|block": "电机 停止|%index",
-    "motor.motorStopAll|block": "停止所有电机"
+    "motor.motorStopAll|block": "停止所有电机",
+    "motor.stopAllStepperMotor|block": "停止所有28BYJ-48步进电机"
 }
