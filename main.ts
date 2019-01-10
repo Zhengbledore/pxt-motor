@@ -515,11 +515,11 @@ namespace motor {
         setStepper_28(0x01, direction1 > 0);
         setStepper_28(0x02, direction2 > 0);
         Degree1 = Math.abs(Degree1);
-        basic.pause((1000 * Degree1) / 360);
-        motorStop(1)
-        motorStop(2)
-        motorStop(3)
-        motorStop(4)
+        //basic.pause((1000 * Degree1) / 360);
+        //motorStop(1)
+        //motorStop(2)
+        //motorStop(3)
+        //motorStop(4)
         if (Degree1 == 0 && Degree2 == 0) {
 
         }
