@@ -170,6 +170,8 @@ namespace motor {
     }
 
     funciton setXsdemo(channel: number, on: number): void{
+   	if (channel < 0 || channel > 15)
+            return;
     	pins.servoWritePin(channel, on);
     }
 
@@ -253,11 +255,11 @@ namespace motor {
 
 
      /**
-	 * 新舵机Steering gear control function.
+	 * Steering gear control function.
      * S1~S8.
      * 0°~180°.
 	*/
-    //% blockId=motor_servo block="新舵机Servo|%index|degree|%degree"
+    //% blockId=motor_servo1 block="新舵机Servo|%index|degree|%degree"
     //% weight=100
     //% degree.min=0 degree.max=180
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=4
@@ -265,9 +267,9 @@ namespace motor {
         if (!initialized) {
             initPCA9685()
         }
-        // 100hz
 
-        setXsdemo(index + 7, degree)
+
+        setXsdemo(index + 7, 0)
     }
 
     /**
