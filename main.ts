@@ -169,6 +169,10 @@ namespace motor {
         pins.i2cWriteBuffer(PCA9685_ADDRESS, buf);
     }
 
+    funciton setXsdemo(channel: number, on: number): void{
+    	pins.servoWritePin(channel, on);
+    }
+
 
     function setStepper_28(index: number, dir: boolean): void {
         if (index == 1) {
@@ -245,6 +249,25 @@ namespace motor {
         let v_us = (degree * 10 + 600) // 0.6ms ~ 2.4ms
         let value = v_us * 4095 / (1000000 / 100)
         setPwm(index + 7, 0, value)
+    }
+
+
+     /**
+	 * Steering gear control function.
+     * S1~S8.
+     * 0°~180°.
+	*/
+    //% blockId=motor_servo block="新舵机Servo|%index|degree|%degree"
+    //% weight=100
+    //% degree.min=0 degree.max=180
+    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=4
+    export function servo1(index: Servos, degree: number): void {
+        if (!initialized) {
+            initPCA9685()
+        }
+        // 100hz
+
+        setXsdemo(index + 7, degree)
     }
 
     /**

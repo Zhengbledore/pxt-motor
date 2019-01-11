@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a29c78a4-e3e2-4b98-bc21-bd06b1947c83" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/pxt.json" beforeDir="false" afterPath="$PROJECT_DIR$/pxt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_locales/zh/motor-strings.json" beforeDir="false" afterPath="$PROJECT_DIR$/_locales/zh/motor-strings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/main.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,17 +17,26 @@
       <file leaf-file-name="motor-strings.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_locales/zh/motor-strings.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+            <state relative-caret-position="88">
+              <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="631">
+              <caret line="610" lean-forward="true" selection-start-line="610" selection-end-line="610" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="main.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.ts">
+        <entry file="file://$USER_HOME$/Downloads/main.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="521" column="10" selection-start-line="521" selection-start-column="10" selection-end-line="521" selection-end-column="10" />
+            <state relative-caret-position="203">
+              <caret line="262" column="24" lean-forward="true" selection-end-line="610" />
             </state>
           </provider>
         </entry>
@@ -40,7 +50,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pxt.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pxt.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pxt.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="66">
@@ -69,6 +79,8 @@
     <findStrings>
       <find>setStepper_28</find>
       <find>motorStop</find>
+      <find>setPwm</find>
+      <find>servo1</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -78,15 +90,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.vscode/tasks.json" />
+        <option value="$PROJECT_DIR$/pxt.json" />
         <option value="$PROJECT_DIR$/_locales/zh/motor-strings.json" />
         <option value="$PROJECT_DIR$/main.ts" />
-        <option value="$PROJECT_DIR$/pxt.json" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="3" />
-    <option name="y" value="23" />
+    <option name="y" value="24" />
     <option name="width" value="1433" />
     <option name="height" value="827" />
   </component>
@@ -154,7 +166,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="3" y="24" width="1433" height="827" extended-state="6" />
+    <frame x="3" y="24" width="1433" height="827" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24982554" />
@@ -212,17 +224,10 @@
     <entry file="file://$PROJECT_DIR$/.vscode/settings.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.ts">
+    <entry file="file://$PROJECT_DIR$/pxt.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="521" column="10" selection-start-line="521" selection-start-column="10" selection-end-line="521" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_locales/zh/motor-strings.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+        <state relative-caret-position="66">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -233,10 +238,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pxt.json">
+    <entry file="file://$PROJECT_DIR$/_locales/zh/motor-strings.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        <state relative-caret-position="88">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="262" column="24" lean-forward="true" selection-end-line="610" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="610" lean-forward="true" selection-start-line="610" selection-end-line="610" />
         </state>
       </provider>
     </entry>
