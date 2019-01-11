@@ -269,7 +269,7 @@ namespace motor {
         }
 
 
-        setXsdemo(index + 7, 0)
+        setXsdemo(index + 7, degree)
     }
 
     /**
