@@ -253,7 +253,7 @@ namespace motor {
 
 
      /**
-	 * Steering gear control function.
+	 * 新舵机Steering gear control function.
      * S1~S8.
      * 0°~180°.
 	*/
