@@ -172,7 +172,7 @@ namespace motor {
     function setXsdemo(channel: number, on: number): void{
    	    if (channel < 0 || channel > 15)
             return;
-        {
+        
     	pins.servoWritePin(channel, on);
     }
 
