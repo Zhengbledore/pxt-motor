@@ -169,13 +169,6 @@ namespace motor {
         pins.i2cWriteBuffer(PCA9685_ADDRESS, buf);
     }
 
-    function setXsdemo(channel: number, on: number): void{
-   	    if (channel < 0 || channel > 15)
-            return;
-        
-    	pins.servoWritePin(channel, on);
-    }
-
 
     function setStepper_28(index: number, dir: boolean): void {
         if (index == 1) {
@@ -254,25 +247,6 @@ namespace motor {
         setPwm(index + 7, 0, value)
     }
 
-
-     /**
-	 * Steering gear control function new.
-     * S1~S8.
-     * 0°~180°.
-	*/
-    //% blockId=motor_servo1 block="新舵机Servo|%index|degree|%degree"
-    //% weight=100
-    //% degree.min=0 degree.max=180
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=4
-    export function servo1(index: Servos, degree: number): void {
-        if (!initialized) {
-            initPCA9685()
-        }
-
-
-        setXsdemo(index + 7, degree)
-    }
-
     /**
 	 * Execute a motor
      * M1~M4.
@@ -297,7 +271,7 @@ namespace motor {
         if (index > 4 || index <= 0)
             return
         let pn = (4-index) * 2
-        let pp = (4-index) * 2 + 1 
+        let pp = (4-index) * 2 + 1
         if (speed >= 0) {
             setPwm(pp, 0, speed)
             setPwm(pn, 0, 0)
@@ -323,7 +297,7 @@ namespace motor {
         // Degree = Degree * direction;
         //setFreq(100);
         setStepper_42(index, direction > 0);
-        if (degree == 0) { 
+        if (degree == 0) {
             return;
         }
         let Degree = Math.abs(degree);
@@ -347,7 +321,7 @@ namespace motor {
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
     export function stepperTurn_42(index: Steppers, direction: Dir, turn: number): void {
-        if (turn == 0) { 
+        if (turn == 0) {
             return;
         }
         let degree = turn * 360;
@@ -366,7 +340,7 @@ namespace motor {
         if (!initialized) {
             initPCA9685()
         }
-        if (degree == 0) { 
+        if (degree == 0) {
             return;
         }
         let Degree = Math.abs(degree);
@@ -394,7 +368,7 @@ namespace motor {
     //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     //% direction.fieldEditor="gridpicker" direction.fieldOptions.columns=2
     export function stepperTurn_28(index: Steppers, direction: Dir, turn: number): void {
-        if (turn == 0) { 
+        if (turn == 0) {
             return;
         }
         let degree = turn * 360;
@@ -422,19 +396,19 @@ namespace motor {
             if (Degree1 == 0 && Degree2 == 0) {
                 setStepper_42(0x01, direction1 > 0);
                 setStepper_42(0x02, direction2 > 0);
-            } else if ((Degree1 == 0) && (Degree2 > 0)) { 
+            } else if ((Degree1 == 0) && (Degree2 > 0)) {
                 timeout1 = (50000 * Degree2) / (360 * 100)
                 setStepper_42(0x01, direction1 > 0);
                 setStepper_42(0x02, direction2 > 0);
                 basic.pause(timeout1);
                 motorStop(3); motorStop(4);
-            } else if ((Degree2 == 0) && (Degree1 > 0)) { 
+            } else if ((Degree2 == 0) && (Degree1 > 0)) {
                 timeout1 = (50000 * Degree1) / (360 * 100)
                 setStepper_42(0x01, direction1 > 0);
                 setStepper_42(0x02, direction2 > 0);
                 basic.pause(timeout1);
                 motorStop(1); motorStop(2);
-            } else if ((Degree2 > Degree1)) { 
+            } else if ((Degree2 > Degree1)) {
                 timeout1 = (50000 * Degree1) / (360 * 100)
                 timeout2 = (50000 * (Degree2 - Degree1)) / (360 * 100)
                 setStepper_42(0x01, direction1 > 0);
@@ -443,7 +417,7 @@ namespace motor {
                 motorStop(1); motorStop(2);
                 basic.pause(timeout2);
                 motorStop(3); motorStop(4);
-            }  else if ((Degree2 < Degree1)) { 
+            }  else if ((Degree2 < Degree1)) {
                 timeout1 = (50000 * Degree2) / (360 * 100)
                 timeout2 = (50000 * (Degree1 - Degree2)) / (360 * 100)
                 setStepper_42(0x01, direction1 > 0);
@@ -452,24 +426,24 @@ namespace motor {
                 motorStop(3); motorStop(4);
                 basic.pause(timeout2);
                 motorStop(1); motorStop(2);
-            } 
+            }
         } else if (stepper == 2) {
             if (Degree1 == 0 && Degree2 == 0) {
                 setStepper_28(1, direction1 > 0);
                 setStepper_28(2, direction2 > 0);
-            } else if ((Degree1 == 0) && (Degree2 > 0)) { 
+            } else if ((Degree1 == 0) && (Degree2 > 0)) {
                 timeout1 = (50000 * Degree2) / (360 * 100)
                 setStepper_28(1, direction1 > 0);
                 setStepper_28(2, direction2 > 0);
                 basic.pause(timeout1);
                 motorStop(3); motorStop(4);
-            } else if ((Degree2 == 0) && (Degree1 > 0)) { 
+            } else if ((Degree2 == 0) && (Degree1 > 0)) {
                 timeout1 = (50000 * Degree1) / (360 * 100)
                 setStepper_28(1, direction1 > 0);
                 setStepper_28(2, direction2 > 0);
                 basic.pause(timeout1);
                 motorStop(1); motorStop(2);
-            } else if ((Degree2 > Degree1)) { 
+            } else if ((Degree2 > Degree1)) {
                 timeout1 = (50000 * Degree1) / (360 * 100)
                 timeout2 = (50000 * (Degree2 - Degree1)) / (360 * 100)
                 setStepper_28(1, direction1 > 0);
@@ -478,7 +452,7 @@ namespace motor {
                 motorStop(1); motorStop(2);
                 basic.pause(timeout2);
                 motorStop(3); motorStop(4);
-            }  else if ((Degree2 < Degree1)) { 
+            }  else if ((Degree2 < Degree1)) {
                 timeout1 = (50000 * Degree2) / (360 * 100)
                 timeout2 = (50000 * (Degree1 - Degree2)) / (360 * 100)
                 setStepper_28(1, direction1 > 0);
@@ -487,8 +461,8 @@ namespace motor {
                 motorStop(3); motorStop(4);
                 basic.pause(timeout2);
                 motorStop(1); motorStop(2);
-            } 
-        } else { 
+            }
+        } else {
             //
         }
     }
@@ -502,27 +476,27 @@ namespace motor {
     //% direction1.fieldEditor="gridpicker" direction1.fieldOptions.columns=2
     //% direction2.fieldEditor="gridpicker" direction2.fieldOptions.columns=2
     export function stepperTurnDual_42(stepper: Stepper, direction1: Dir, trun1: number, direction2: Dir,trun2: number): void {
-        if ((trun1 == 0)&&(trun2 == 0)) { 
+        if ((trun1 == 0)&&(trun2 == 0)) {
             return;
         }
         let degree1 = trun1 * 360;
         let degree2 = trun2 * 360;
-        
+
         if (stepper == 1) {
             stepperDegreeDual_42(stepper, direction1, degree1, direction2, degree2);
         } else if (stepper == 2) {
             stepperDegreeDual_42(stepper, direction1, degree1, direction2, degree2);
-        } else { 
+        } else {
 
         }
-        
+
     }
 
     /**
 	 * Two parallel stepper motors are executed simultaneously(DegreeDual) 28BYJ-48.
     */
     //% weight=40
-    //% blockId=  block="28BYJ-48双步进 %stepper|M1_M2 方向 %direction1|角度 %degree1|M3_M4 方向 %direction2|角度 %degree2"
+    //% blockId=stepperDegreeDual_28 block="28BYJ-48双步进 %stepper|M1_M2 方向 %direction1|角度 %degree1|M3_M4 方向 %direction2|角度 %degree2"
     //% stepper.fieldEditor="gridpicker" stepper.fieldOptions.columns=2
     //% direction1.fieldEditor="gridpicker" direction1.fieldOptions.columns=2
     //% direction2.fieldEditor="gridpicker" direction2.fieldOptions.columns=2
@@ -581,7 +555,7 @@ namespace motor {
     */
     //% weight=20
     //% blockId=motor_motorStop block="Motor stop|%index"
-    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2 
+    //% index.fieldEditor="gridpicker" index.fieldOptions.columns=2
     export function motorStop(index: Motors) {
         setPwm((4 - index) * 2, 0, 0);
         setPwm((4 - index) * 2 + 1, 0, 0);
@@ -610,4 +584,3 @@ namespace motor {
         motorStop(4)
     }
 }
-
