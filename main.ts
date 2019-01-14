@@ -169,9 +169,10 @@ namespace motor {
         pins.i2cWriteBuffer(PCA9685_ADDRESS, buf);
     }
 
-    funciton setXsdemo(channel: number, on: number): void{
-   	if (channel < 0 || channel > 15)
+    function setXsdemo(channel: number, on: number): void{
+   	    if (channel < 0 || channel > 15)
             return;
+        {
     	pins.servoWritePin(channel, on);
     }
 
